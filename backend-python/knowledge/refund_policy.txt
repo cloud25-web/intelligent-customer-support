@@ -1,0 +1,13 @@
+REFUND POLICY
+
+Customers can request a refund for eligible orders.
+
+For duplicate payments, customers should provide their transaction ID and order number.
+
+Duplicate charges are reviewed by the payment support team.
+
+Once a duplicate payment is verified, the company initiates the refund according to its payment processing timeline.
+
+Refund status can be checked using the transaction ID.
+
+If a refund has not been received within the expected processing period, the case can be escalated to the payment support team.

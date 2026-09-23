@@ -1,0 +1,9 @@
+ACCOUNT SECURITY POLICY
+
+If a customer reports that their account has been compromised, the issue should be treated as a high-risk security issue.
+
+Customers may be asked to provide their registered email address or username for account verification.
+
+Customers must never provide their password, OTP, PIN, or complete payment credentials.
+
+Suspected account takeover or unauthorized access should be escalated to a human support agent.
