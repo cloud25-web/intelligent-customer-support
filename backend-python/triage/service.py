@@ -2,8 +2,9 @@ import os
 import json
 from groq import Groq
 from dotenv import load_dotenv
-
 from .models import TriageRequest, TriageResponse
+from .rules import apply_escalation_rules
+
 
 load_dotenv()
 
@@ -19,6 +20,9 @@ Analyze the following customer complaint.
 
 Complaint:
 {request.complaint}
+
+Previous conversation:
+{request.conversation_history}
 
 Determine:
 
@@ -67,8 +71,43 @@ Return ONLY valid JSON in this exact format:
     "confidence": 0.0,
     "requires_question": false,
     "next_question": null,
-    "recommended_action": "string"
+    "recommended_action": "string",
+    "risk_level": "string"
 }}
+Determine whether enough information is available to understand and handle the complaint.
+
+If important information is missing:
+- Add the missing information to missing_information.
+- Set requires_question to true.
+- Generate one clear next_question asking for the most important missing information.
+- Set recommended_action to "ask_question".
+
+If enough information is available:
+- Set missing_information to an empty list.
+- Set requires_question to false.
+- Set next_question to null.
+- Choose either "resolve" or "escalate" as the recommended action.
+
+Do not ask for information that is already present in the complaint or conversation history.
+Ask only ONE question at a time.
+
+Determine the risk level of the complaint.
+
+Allowed risk levels:
+- low
+- medium
+- high
+- critical
+
+Risk should consider:
+- potential financial loss
+- account/security problems
+- repeated unresolved complaints
+- serious service disruption
+- critical or time-sensitive situations
+- uncertainty in the AI's understanding
+
+Return the risk level in the JSON response.
 """
 
     response = client.chat.completions.create(
@@ -83,5 +122,5 @@ Return ONLY valid JSON in this exact format:
     )
 
     result = json.loads(response.choices[0].message.content)
-
-    return TriageResponse(**result)
+    triage_result = TriageResponse(**result)
+    return apply_escalation_rules(triage_result)
