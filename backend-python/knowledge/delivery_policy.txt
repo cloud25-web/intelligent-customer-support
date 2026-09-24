@@ -1,0 +1,7 @@
+DELIVERY POLICY
+
+Customers can check their order status using their order number.
+
+If an order is delayed beyond the expected delivery date, support should first verify the order number and delivery status.
+
+If the delivery delay is significant or the customer has repeatedly contacted support without resolution, the case may be escalated to the delivery support team.

@@ -1,0 +1,9 @@
+PAYMENT POLICY
+
+If a customer believes they were charged incorrectly, the support system should collect the transaction ID and order number.
+
+For duplicate charges, the transaction should be verified before a refund is issued.
+
+Unauthorized transactions or suspected payment fraud should be escalated to a human support agent.
+
+Customers should never share passwords, PINs, or full payment credentials with support.
